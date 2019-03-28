@@ -44,9 +44,6 @@ TagManager:
   - name: Ground
     uniqueID: 2905751641
     locked: 0
-  - name: Foliage
-    uniqueID: 3955362833
-    locked: 0
-  - name: Characters
+  - name: Player, foliage, etc.
     uniqueID: 3401076043
     locked: 0

@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PLayerController.cs" />
+    <Compile Include="Assets\SortingLayerSetter.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/moje/sillyprojects/BeerCraft/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
