@@ -10,6 +10,7 @@ public class PLayerController : MonoBehaviour
     private Animator anim;
     bool playerMoving;
     Vector2 lastMove;
+    RaycastHit2D hit;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,9 @@ public class PLayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.DrawLine(transform.position, transform.position.normalized, Color.yellow);
         Moving();
+        Action();
     }
 
     void Moving()
@@ -47,5 +50,20 @@ public class PLayerController : MonoBehaviour
         anim.SetBool("playerMoving", playerMoving);
         anim.SetFloat("lastMoveX", lastMove.x);
         anim.SetFloat("lastMoveY", lastMove.y);
+    }
+
+
+    void Action()
+    {
+        if(Input.GetKeyDown("e"))
+        {
+            lastMove.x = lastMove.x / 2;
+            lastMove.y = lastMove.y / 2;
+            Vector3 startDistance = new Vector3(transform.position.x + lastMove.x, transform.position.y + lastMove.y, transform.position.z);
+          
+            hit = Physics2D.Raycast(startDistance, lastMove);
+            Debug.DrawRay(startDistance, lastMove, Color.red,100);
+            Debug.Log(hit.collider);
+        }
     }
 }
