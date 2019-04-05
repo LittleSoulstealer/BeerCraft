@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PLayerController : MonoBehaviour
-  
+
 {
 
     public float moveSpeed;
@@ -23,7 +23,7 @@ public class PLayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawLine(transform.position, transform.position.normalized, Color.yellow);
+
         Moving();
         Action();
     }
@@ -31,13 +31,13 @@ public class PLayerController : MonoBehaviour
     void Moving()
     {
         playerMoving = false;
-      
+
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
             playerMoving = true;
-                //transform.Translate(new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f, 0f));
-        myRigidbody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, myRigidbody.velocity.y);
-            lastMove = new Vector2(Input.GetAxisRaw("Horizontal"),0f);
+
+            myRigidbody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, myRigidbody.velocity.y);
+            lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
 
         }
         else
@@ -45,10 +45,10 @@ public class PLayerController : MonoBehaviour
             myRigidbody.velocity = new Vector2(0f, myRigidbody.velocity.y);
         }
 
-       if (Input.GetAxisRaw("Vertical") != 0)
+        if (Input.GetAxisRaw("Vertical") != 0)
         {
             playerMoving = true;
-            //  transform.Translate(new Vector3(0f, Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime, 0f));
+
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, Input.GetAxisRaw("Vertical") * moveSpeed);
             lastMove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
 
@@ -68,15 +68,15 @@ public class PLayerController : MonoBehaviour
 
     void Action()
     {
-        if(Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("e"))
         {
-            lastMove.x = lastMove.x / 2;
-            lastMove.y = lastMove.y / 2;
-            Vector3 startDistance = new Vector3(transform.position.x + lastMove.x, transform.position.y + lastMove.y, transform.position.z);
-          
-            hit = Physics2D.Raycast(startDistance, lastMove);
-            Debug.DrawRay(startDistance, lastMove, Color.red,100);
-            Debug.Log(hit.collider);
+
+            hit = Physics2D.Raycast(transform.position, lastMove, 1);
+            Debug.Log(hit.collider.gameObject);
+            PlayerInteraction interaction = hit.collider.gameObject.GetComponent<PlayerInteraction>();
+            if (interaction != null)
+                interaction.Trigger();
+
         }
     }
 }
