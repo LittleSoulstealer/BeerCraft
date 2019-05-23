@@ -72,7 +72,7 @@ public class PLayerController : MonoBehaviour
         {
 
             hit = Physics2D.Raycast(transform.position, lastMove, 1);
-            Debug.Log(hit.collider.gameObject);
+        
             PlayerInteraction interaction = hit.collider.gameObject.GetComponent<PlayerInteraction>();
             if (interaction != null)
                 interaction.Trigger();

@@ -47,3 +47,6 @@ TagManager:
   - name: Player, foliage, etc.
     uniqueID: 3401076043
     locked: 0
+  - name: UI
+    uniqueID: 1883887315
+    locked: 0
