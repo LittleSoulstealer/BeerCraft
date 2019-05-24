@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PLayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 
 {
 
@@ -13,17 +13,14 @@ public class PLayerController : MonoBehaviour
     Vector2 lastMove;
     RaycastHit2D hit;
 
-    // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         Moving();
         Action();
     }
@@ -38,12 +35,9 @@ public class PLayerController : MonoBehaviour
 
             myRigidbody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, myRigidbody.velocity.y);
             lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
-
         }
         else
-        {
             myRigidbody.velocity = new Vector2(0f, myRigidbody.velocity.y);
-        }
 
         if (Input.GetAxisRaw("Vertical") != 0)
         {
@@ -54,9 +48,7 @@ public class PLayerController : MonoBehaviour
 
         }
         else
-        {
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0f);
-        }
 
         anim.SetFloat("moveX", Input.GetAxisRaw("Horizontal"));
         anim.SetFloat("moveY", Input.GetAxisRaw("Vertical"));
@@ -70,7 +62,6 @@ public class PLayerController : MonoBehaviour
     {
         if (Input.GetKeyDown("e"))
         {
-
             hit = Physics2D.Raycast(transform.position, lastMove, 1);
         
             PlayerInteraction interaction = hit.collider.gameObject.GetComponent<PlayerInteraction>();

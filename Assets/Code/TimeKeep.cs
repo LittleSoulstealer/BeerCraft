@@ -23,7 +23,7 @@ public class TimeKeep : MonoBehaviour, ISubject
     public void ChangeDate()
     {
         day++;
-        Debug.Log("Day: " + day);
+        Debug.Log("New day started: " + day + "\n");
          foreach (IObserver observer in timeDependant)
         {
             NotifyObserver(observer);

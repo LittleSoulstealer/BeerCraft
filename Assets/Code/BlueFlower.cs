@@ -6,9 +6,9 @@ public class BlueFlower : Plant
 {
     public BlueFlower()
     {
-        st1 = 2;
-        st2 = 10;
-        st3 = 11;
+        daysBeforeStage1 = 2;
+        daysBeforeStage2 = 10;
+        daysBeforeStage3 = 11;
     }
 
   
