@@ -63,6 +63,7 @@
     <Compile Include="Assets\Code\BlueFlower.cs" />
     <Compile Include="Assets\Code\Interfaces\IObserver.cs" />
     <Compile Include="Assets\Code\Interfaces\ISubject.cs" />
+    <Compile Include="Assets\Code\Inventory\InventoryUI.cs" />
     <Compile Include="Assets\Code\Plant.cs" />
     <Compile Include="Assets\Code\PlayerController.cs" />
     <Compile Include="Assets\Code\PlayerInteraction.cs" />
@@ -70,6 +71,9 @@
     <Compile Include="Assets\Code\SortingLayerSetter.cs" />
     <Compile Include="Assets\Code\TimeBasedEvents.cs" />
     <Compile Include="Assets\Code\TimeKeep.cs" />
+    <Compile Include="Assets\Inventory.cs" />
+    <Compile Include="Assets\InventoryItem.cs" />
+    <Compile Include="Assets\ItemUI.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Users/marta.gejdel/BeerCraft/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
