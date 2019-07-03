@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 
@@ -13,10 +14,20 @@ public class PlayerController : MonoBehaviour
     Vector2 lastMove;
     RaycastHit2D hit;
 
-    void Start()
+    ActionCollider actionCollider;
+    GameObject acgo;
+    
+
+    void Awake()
     {
         anim = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
+       
+        actionCollider =GetComponentInChildren<ActionCollider>();
+        acgo = actionCollider.gameObject;
+      
+       
+     
     }
 
     void Update()
@@ -35,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
             myRigidbody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, myRigidbody.velocity.y);
             lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
+            actionCollider.gameObject.transform.position = transform.position + (Vector3)lastMove;
         }
         else
             myRigidbody.velocity = new Vector2(0f, myRigidbody.velocity.y);
@@ -45,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, Input.GetAxisRaw("Vertical") * moveSpeed);
             lastMove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
+            actionCollider.gameObject.transform.position = transform.position + (Vector3)lastMove;
 
         }
         else
@@ -55,19 +68,32 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("playerMoving", playerMoving);
         anim.SetFloat("lastMoveX", lastMove.x);
         anim.SetFloat("lastMoveY", lastMove.y);
+        
     }
 
 
     void Action()
     {
+        
         if (Input.GetKeyDown("e"))
         {
-            hit = Physics2D.Raycast(transform.position, lastMove, 1);
+          
+            //PlayerInteraction interaction = hit.collider.gameObject.GetComponent<PlayerInteraction>();
+         //   if (interaction != null)
+               // interaction.Trigger();
+
+
         
-            PlayerInteraction interaction = hit.collider.gameObject.GetComponent<PlayerInteraction>();
-            if (interaction != null)
-                interaction.Trigger();
+        }
+        if (Input.GetKeyDown("o") && actionCollider.isTriggered==true)
+        {
+            Debug.Log(lastMove);
+            actionCollider.WaterGround();
+         
 
         }
+
     }
+
+
 }
