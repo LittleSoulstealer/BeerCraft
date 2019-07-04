@@ -31,7 +31,7 @@ public class GroundTile : Tile
        
        
         myCenter = new Vector3(position.x+0.5f, position.y+0.5f, 0f);
-        Debug.Log(myCenter);
+   
         return base.StartUp(position, tilemap, go);
     }
 
