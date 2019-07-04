@@ -73,7 +73,6 @@
     <Compile Include="Assets\Code\RedFlower.cs" />
     <Compile Include="Assets\Code\RedPotion.cs" />
     <Compile Include="Assets\Code\ScriptableTiles\GroundTile.cs" />
-    <Compile Include="Assets\Code\ShopItem.cs" />
     <Compile Include="Assets\Code\SortingLayerSetter.cs" />
     <Compile Include="Assets\Code\TimeBasedEvents.cs" />
     <Compile Include="Assets\Code\TimeKeep.cs" />
