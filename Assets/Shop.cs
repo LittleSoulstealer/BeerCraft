@@ -8,13 +8,16 @@ public class Shop : MonoBehaviour
     List<InventoryItem> shopItemList;
     int[] shopPrices;
     List<InventoryItem> playerItemList;
+    int money;
     // Start is called before the first frame update
+
+     
     void Start()
     {
+       
         shopItemList = new List<InventoryItem>
         {
-            Inventory.instance.seeds,
-            Inventory.instance.bottles
+         
         };
 
     }

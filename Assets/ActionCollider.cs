@@ -30,15 +30,16 @@ public class ActionCollider : MonoBehaviour
 
     }
 
-    public void Sow(Plant seeds)
+    public bool Sow(Plant seeds)
     {
         tile = (GroundTile)PlantTileMap.GetTile(Vector3Int.FloorToInt(transform.position));
         
         if (tile.isFree)
         {
             tile.Sow(seeds);
-
+            return true;
         }
+        return false;
     }
     void Awake()
     {

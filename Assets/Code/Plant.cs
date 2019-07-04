@@ -15,16 +15,18 @@ public abstract class Plant : MonoBehaviour, IObserver
     GroundTile myGround;
     public PickableFruit myFruit;
     PickableFruit defaultFruit;
-
+    public bool watered;
     public GroundTile MyGround { get => myGround; set => myGround = value; }
 
     public void UpdateFromSubject()
     {
-        if (MyGround.isWet)
+        Debug.Log("days growing: " + dayOfMyLife);
+        if (watered)
         {
             DayChange();
 
             Grow(daysBeforeStage1, daysBeforeStage2, daysBeforeStage3);
+            watered = false;
         }
     }
 
@@ -76,6 +78,8 @@ public abstract class Plant : MonoBehaviour, IObserver
             sprRend.sprite = stage3;
             myFruit= Instantiate<PickableFruit>(myFruit, transform.position, Quaternion.identity, this.transform);
             myFruit.myPlant=this;
+            myFruit.GetComponent<BoxCollider2D>().enabled = true;
+  
             return;
         }
     }

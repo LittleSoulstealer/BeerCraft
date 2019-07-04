@@ -21,7 +21,7 @@ public class BrewingPotions : MonoBehaviour, IObserver
     }
     public void Brew()
     {
-        if(Inventory.instance.flowers.amount>0 && Inventory.instance.bottles.amount>0 && !isBrewing)
+        if(Inventory.instance.flowers.amount>4 && Inventory.instance.bottles.amount>0 && !isBrewing)
             {
             isBrewing = true;
             Inventory.instance.flowers.amount += -5;
@@ -42,6 +42,7 @@ public class BrewingPotions : MonoBehaviour, IObserver
 
   void CreatePotion(RedPotion redPotion)
     {
+        timeKeep.RemoveObserver(this);
         Vector3 potionPosision = transform.position;
         potionPosision.y += 3;
         RedPotion potion;
@@ -60,7 +61,7 @@ public class BrewingPotions : MonoBehaviour, IObserver
         if (finishedBrewing)
         {
             isBrewing = false;
-            timeKeep.RemoveObserver(this);
+           
             brewingDay = 0;
             myPotion.AddMyselfToInventory();
 

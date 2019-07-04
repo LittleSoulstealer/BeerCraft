@@ -60,6 +60,9 @@ public class GroundTile : Tile
     {
         isWet = true;
         base.sprite = wetGround;
+        if(myPlant!=null)
+        { myPlant.watered = true; }
+       
         
 
     }

@@ -16,18 +16,18 @@ public class PlayerController : MonoBehaviour
 
     ActionCollider actionCollider;
     GameObject acgo;
-    [SerializeField]Plant RedFlower;
+    [SerializeField] Plant RedFlower;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
-       
-        actionCollider =GetComponentInChildren<ActionCollider>();
+
+        actionCollider = GetComponentInChildren<ActionCollider>();
         acgo = actionCollider.gameObject;
-      
-       
-     
+
+
+
     }
 
     void Update()
@@ -68,24 +68,28 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("playerMoving", playerMoving);
         anim.SetFloat("lastMoveX", lastMove.x);
         anim.SetFloat("lastMoveY", lastMove.y);
-        
+
     }
 
 
     void Action()
     {
-        
+
         if (Input.GetKeyDown("e"))
         {
             Debug.Log("e");
-         
-               if(actionCollider.pointingOnPlantGround==true)
+
+            if (actionCollider.pointingOnPlantGround == true)
             {
-                if(Inventory.instance.seeds.amount>0)
+                if (Inventory.instance.seeds.amount > 0)
                 {
-                    Inventory.instance.seeds.amount -= 1;
-                    actionCollider.Sow(RedFlower); }
-               
+                    if (actionCollider.Sow(RedFlower))
+                    {
+                        Inventory.instance.seeds.amount -= 1;
+                    }
+
+                }
+
             }
             if (actionCollider.collidingGO != null)
             {
@@ -94,18 +98,18 @@ public class PlayerController : MonoBehaviour
                 if (interaction != null)
                 {
                     interaction.Trigger();
-                    if(actionCollider.collidingGO.GetComponent<PickableFruit>())
+                    if (actionCollider.collidingGO.GetComponent<PickableFruit>())
                     {
                         actionCollider.collidingGO = null;
                     }
                 }
             }
-          
+
 
 
 
         }
-        if (Input.GetKeyDown("o") && actionCollider.pointingOnPlantGround==true)
+        if (Input.GetKeyDown("o") && actionCollider.pointingOnPlantGround == true)
         {
             Debug.Log("o");
             actionCollider.WaterGround();

@@ -9,16 +9,25 @@ public class TimeKeep : MonoBehaviour, ISubject
 
     int day=1;
     List<IObserver> timeDependant;
-    
+    public float secondsInFullDay = 5f;
+    public float currentTimeOfDay = 0;
+    public float timeMultiplier = 1f;
+
 
     public TimeKeep()
     {
         timeDependant  = new List<IObserver>(); 
     }
 
-    private void Start()
+
+    private void Update()
     {
-        
+        currentTimeOfDay += (Time.deltaTime / secondsInFullDay) * timeMultiplier;
+        if (currentTimeOfDay >= 1)
+        {
+            ChangeDate();
+            currentTimeOfDay = 0;
+        }
     }
 
     public void ChangeDate()

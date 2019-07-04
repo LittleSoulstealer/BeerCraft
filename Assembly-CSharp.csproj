@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\ActionCollider.cs" />
+    <Compile Include="Assets\Bottles.cs" />
     <Compile Include="Assets\BrewingPotions.cs" />
     <Compile Include="Assets\Code\BlueFlower.cs" />
     <Compile Include="Assets\Code\Interfaces\IObserver.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\InventoryItem.cs" />
     <Compile Include="Assets\ItemUI.cs" />
     <Compile Include="Assets\PickableFruit.cs" />
+    <Compile Include="Assets\Prefabs\Seeds.cs" />
     <Compile Include="Assets\RedFlowerFruit.cs" />
     <Compile Include="Assets\Shop.cs" />
     <Compile Include="Assets\ShowUIThings.cs" />

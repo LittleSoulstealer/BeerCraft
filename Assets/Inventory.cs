@@ -6,24 +6,34 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
     public List<InventoryItem> items = new List<InventoryItem>();
-  public  InventoryItem seeds;
-   public InventoryItem bottles;
+    public InventoryItem seeds;
+    public InventoryItem bottles;
 
-   public int money=0;
- public InventoryItem potions;
+    public int money;
+    public InventoryItem potions;
     public InventoryItem flowers;
 
     private void Start()
     {
         instance = this;
-        seeds.price = 5;
-        seeds.amount = 5;
-        seeds.name = "Seeds";
-        Add(seeds);
-        bottles.price = 15;
-        bottles.amount = 3;
-        bottles.name = "Bottles";
-        Add(bottles);
+        money = 0;
+    
+        flowers =Instantiate(flowers, this.transform);
+        items.Add(flowers);
+       
+
+        potions = Instantiate(potions, this.transform);
+        potions.GetComponent<SpriteRenderer>().enabled = false;
+
+        items.Add(potions);
+        seeds = Instantiate(seeds, this.transform);
+        bottles = Instantiate(bottles, this.transform);
+
+        items.Add(seeds);
+        items.Add(bottles);
+        flowers.amount = 20;
+ 
+
 
     }
     private void Update()
@@ -37,17 +47,12 @@ public class Inventory : MonoBehaviour
     public void Add(InventoryItem item)
     {
         item.gameObject.SetActive(false);
-        if (!items.Contains(item))
-        { 
-        items.Add(item);
-        
-        }
         item.amount += 1;
     }
-    public void Remove(InventoryItem item)
+    public void Remove(InventoryItem item, int amount)
     {
-        item.amount -= 1;
-        if (item.amount == 0)
-            items.Remove(item);
+        item.amount -= amount;
+
+
     }
 }
