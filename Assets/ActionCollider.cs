@@ -8,30 +8,42 @@ public class ActionCollider : MonoBehaviour
     BoxCollider2D collider;
     GroundTile tile;
     Tilemap PlantTileMap;
-   public bool isTriggered;
+   public bool pointingOnPlantGround;
+    
+    GameObject mySeeds;
+   public GameObject collidingGO;
 
 
 
     public void WaterGround()
     {
-  
-       if(PlantTileMap!=null && PlantTileMap.gameObject.name== "PlantGround")
-       {
-           
+
+        if (PlantTileMap != null && PlantTileMap.gameObject.name == "PlantGround")
+        {
+
             tile = (GroundTile)PlantTileMap.GetTile(Vector3Int.FloorToInt(transform.position));
             Debug.Log(tile.name);
             tile.WetGround();
             PlantTileMap.RefreshAllTiles();
-  
-       }
-
-
+            tile = null;
+        }
 
     }
 
+    public void Sow(Plant seeds)
+    {
+        tile = (GroundTile)PlantTileMap.GetTile(Vector3Int.FloorToInt(transform.position));
+        
+        if (tile.isFree)
+        {
+            tile.Sow(seeds);
+
+        }
+    }
     void Awake()
     {
         collider = gameObject.GetComponent<BoxCollider2D>();
+  
        
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,8 +52,9 @@ public class ActionCollider : MonoBehaviour
         if(collision.gameObject.name == "PlantGround")
         {
             PlantTileMap = collision.gameObject.GetComponent<Tilemap>();
-            isTriggered = true;
+            pointingOnPlantGround = true;
         }
+        collidingGO = collision.gameObject;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -49,7 +62,7 @@ public class ActionCollider : MonoBehaviour
         if (collision.gameObject.name == "PlantGround")
         {
             PlantTileMap = null;
-            isTriggered = false;
+            pointingOnPlantGround = false;
         }
     }
 

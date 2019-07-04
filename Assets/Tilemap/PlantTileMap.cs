@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class PlantTileMap : MonoBehaviour
 {
     Tilemap tileMap;
-    GridLayout grid;
+  public GridLayout grid;
 
     public void Start()
     {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3397348923560195994}
   - component: {fileID: 3397348923560195995}
   - component: {fileID: 3397348923560195996}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RedFlower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3397348923560195997}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.4822123, y: -1.53331, z: -0.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -66,8 +66,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -893891253
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 98973c75bf496e747af8b55b76a66b2e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -92,9 +92,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f432731cb3258a344880228379269b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stage0: {fileID: 21300000, guid: 98973c75bf496e747af8b55b76a66b2e, type: 3}
   stage1: {fileID: 21300002, guid: 98973c75bf496e747af8b55b76a66b2e, type: 3}
   stage2: {fileID: 21300004, guid: 98973c75bf496e747af8b55b76a66b2e, type: 3}
   stage3: {fileID: 21300004, guid: 98973c75bf496e747af8b55b76a66b2e, type: 3}
   daysBeforeStage1: 3
-  daysBeforeStage2: 5
-  daysBeforeStage3: 6
+  daysBeforeStage2: 3
+  daysBeforeStage3: 5
+  myFruit: {fileID: 4531725516483773580, guid: 67f187f02d757fc47b5e116df256c6da, type: 3}

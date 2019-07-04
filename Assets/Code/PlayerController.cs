@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     ActionCollider actionCollider;
     GameObject acgo;
-    
+    [SerializeField]Plant RedFlower;
 
     void Awake()
     {
@@ -77,20 +77,35 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetKeyDown("e"))
         {
-          
-            //PlayerInteraction interaction = hit.collider.gameObject.GetComponent<PlayerInteraction>();
-         //   if (interaction != null)
-               // interaction.Trigger();
-
-
-        
-        }
-        if (Input.GetKeyDown("o") && actionCollider.isTriggered==true)
-        {
-            Debug.Log(lastMove);
-            actionCollider.WaterGround();
+            Debug.Log("e");
          
+               if(actionCollider.pointingOnPlantGround==true)
+            {
+                Debug.Log("Flower?");
+                actionCollider.Sow(RedFlower);
+            }
+            if (actionCollider.collidingGO != null)
+            {
+                Debug.Log(actionCollider.collidingGO);
+                PlayerInteraction interaction = actionCollider.collidingGO.GetComponent<PlayerInteraction>();
+                if (interaction != null)
+                {
+                    interaction.Trigger();
+                    if(actionCollider.collidingGO.GetComponent<PickableFruit>())
+                    {
+                        actionCollider.collidingGO = null;
+                    }
+                }
+            }
+          
 
+
+
+        }
+        if (Input.GetKeyDown("o") && actionCollider.pointingOnPlantGround==true)
+        {
+            Debug.Log("o");
+            actionCollider.WaterGround();
         }
 
     }

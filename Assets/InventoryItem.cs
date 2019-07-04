@@ -4,8 +4,9 @@ public class InventoryItem : MonoBehaviour
 {
     public string name;
 
-    public void AddMyselfToInventory()
+    public virtual void AddMyselfToInventory()
     {
         Inventory.instance.Add(this);
+        
     }
 }

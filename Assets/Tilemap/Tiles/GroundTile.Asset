@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 913e1f6af29759842b0cf3f3b942c6b3, type: 3}
   m_Name: GroundTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300002, guid: ec43de2a405dc09449196bb6e0eb2018, type: 3}
+  m_Sprite: {fileID: 21300016, guid: ec43de2a405dc09449196bb6e0eb2018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -35,4 +35,6 @@ MonoBehaviour:
   m_Flags: 1
   m_ColliderType: 1
   isWet: 0
-  wetGround: {fileID: 21300004, guid: ec43de2a405dc09449196bb6e0eb2018, type: 3}
+  isFree: 1
+  wetGround: {fileID: 21300018, guid: ec43de2a405dc09449196bb6e0eb2018, type: 3}
+  grid: {fileID: 0}
