@@ -81,8 +81,11 @@ public class PlayerController : MonoBehaviour
          
                if(actionCollider.pointingOnPlantGround==true)
             {
-                Debug.Log("Flower?");
-                actionCollider.Sow(RedFlower);
+                if(Inventory.instance.seeds.amount>0)
+                {
+                    Inventory.instance.seeds.amount -= 1;
+                    actionCollider.Sow(RedFlower); }
+               
             }
             if (actionCollider.collidingGO != null)
             {

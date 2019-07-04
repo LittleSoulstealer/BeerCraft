@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedFlowerFruit : PickableFruit
+public class RedPotion : InventoryItem
 {
-   public RedFlowerFruit()
-    {
-        name = "Red Flower";
-        price = 50;
-    }
+  
     public override void AddMyselfToInventory()
     {
-        Inventory.instance.flowers.amount += 1;
+        Inventory.instance.potions.amount += 1;
         base.AddMyselfToInventory();
     }
+
 }

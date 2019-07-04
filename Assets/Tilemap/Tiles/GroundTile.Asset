@@ -37,4 +37,5 @@ MonoBehaviour:
   isWet: 0
   isFree: 1
   wetGround: {fileID: 21300018, guid: ec43de2a405dc09449196bb6e0eb2018, type: 3}
-  grid: {fileID: 0}
+  dryGround: {fileID: 21300016, guid: ec43de2a405dc09449196bb6e0eb2018, type: 3}
+  myPlant: {fileID: 0}

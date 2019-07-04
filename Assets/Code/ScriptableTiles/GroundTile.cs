@@ -11,6 +11,7 @@ public class GroundTile : Tile
     public bool isFree;
 
     public Sprite wetGround;
+    public Sprite dryGround;
     public ITilemap tileMap;
     public Plant myPlant;
   
@@ -65,7 +66,7 @@ public class GroundTile : Tile
     public void DryGround()
     {
         isWet = false;
-        base.sprite = default;
+        base.sprite = dryGround;
         
     }
 

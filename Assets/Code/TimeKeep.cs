@@ -9,6 +9,7 @@ public class TimeKeep : MonoBehaviour, ISubject
 
     int day=1;
     List<IObserver> timeDependant;
+    
 
     public TimeKeep()
     {
@@ -23,7 +24,7 @@ public class TimeKeep : MonoBehaviour, ISubject
     public void ChangeDate()
     {
         day++;
-        Debug.Log("New day started: " + day + "\n");
+        ShowUIThings.instance.dayCount.text = "Day: " + day;
          foreach (IObserver observer in timeDependant)
         {
             NotifyObserver(observer);

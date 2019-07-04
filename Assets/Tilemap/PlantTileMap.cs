@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class PlantTileMap : MonoBehaviour
+public class PlantTileMap : MonoBehaviour, IObserver
 {
     Tilemap tileMap;
   public GridLayout grid;
+    TimeKeep timeKeep;
 
     public void Start()
     {
@@ -25,5 +26,26 @@ public class PlantTileMap : MonoBehaviour
                 }
             }
         }
+
+        var timeKeepGO = GameObject.Find("TimeKeeper");
+        if (timeKeepGO != null)
+        {
+            timeKeep = timeKeepGO.GetComponent<TimeKeep>();
+            timeKeep.RegisterObserver(this);
+        }
+    }
+
+    public void UpdateFromSubject()
+    {
+        foreach (Vector3Int position in tileMap.cellBounds.allPositionsWithin)
+        {
+            GroundTile t = (GroundTile)tileMap.GetTile(position);
+            if (!Equals(t, null))
+            {
+                    t.DryGround();  
+            }
+        }
+        tileMap.RefreshAllTiles();
     }
 }
+

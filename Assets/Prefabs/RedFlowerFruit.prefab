@@ -73,7 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Red Flower Fruit
   sprite: {fileID: 0}
-  price: 50
+  price: 10
   myPlant: {fileID: 0}
 --- !u!114 &2585274943299739556
 MonoBehaviour:

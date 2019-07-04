@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PickableFruit : InventoryItem
 {
-    [SerializeField]Sprite sprite;
-    public int price;
+    
     public Plant myPlant;
     public override void AddMyselfToInventory()
     {
