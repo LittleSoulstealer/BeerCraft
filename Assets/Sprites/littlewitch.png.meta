@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: 915fad47a233d8d40843deec70ef0bb9
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: littlewitch_0
+    21300002: littlewitch_1
+    21300004: littlewitch_2
+    21300006: littlewitch_3
+    21300008: littlewitch_4
+    21300010: littlewitch_5
+    21300012: littlewitch_6
+    21300014: littlewitch_7
+    21300016: littlewitch_8
+    21300018: littlewitch_9
+    21300020: littlewitch_10
+    21300022: littlewitch_11
+  externalObjects: {}
+  serializedVersion: 9
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: littlewitch_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 144
+        width: 29
+        height: 46
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc8cb0daef6c4684d9c6b2c66c3f1c7e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: littlewitch_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 144
+        width: 29
+        height: 46
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62a9bc4d9717d3b43aed7a7307bb6faf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: littlewitch_2
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 144
+        width: 29
+        height: 46
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a2f4cfce09ea444b91f4f5dfbfcc161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: littlewitch_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 95
+        width: 29
+        height: 46
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d083822d8659f63439dfa13b55c2a9ba
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: littlewitch_4
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 95
+        width: 29
+        height: 46
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1606f1b27defe024384165abe6454973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: littlewitch_5
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 95
+        width: 29
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32c881ba9ce36a4428c35d0ce88f1304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: littlewitch_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 29
+        height: 46
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a973a96e6458342448d94aa43e7c0690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: littlewitch_7
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 48
+        width: 29
+        height: 46
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8c0783e1b0ea0f438b0107922cde6c5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: littlewitch_8
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 48
+        width: 29
+        height: 46
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbed169dcf6d0cc4a8f1eab521701c5e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: littlewitch_9
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 29
+        height: 46
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb65467c0f09bc04a874041641b00e77
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: littlewitch_10
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 0
+        width: 29
+        height: 46
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7521b9e321517cf4a8590602cc89a5ab
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: littlewitch_11
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 0
+        width: 29
+        height: 46
+      alignment: 9
+      pivot: {x: 0.48, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac164b2e7ca87d842881c4465e6d430e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 809a06d5c15bf3b4f9e454de3b39eaa8
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

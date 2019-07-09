@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class InventoryItem : MonoBehaviour
     public int price;
     public int amount=0;
 
+   
     public virtual void AddMyselfToInventory()
     {
         Inventory.instance.Add(this);

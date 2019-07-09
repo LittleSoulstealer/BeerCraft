@@ -11,6 +11,9 @@ public class BrewingPotions : MonoBehaviour, IObserver
     bool finishedBrewing;
    [SerializeField] RedPotion redPotion;
     RedPotion myPotion;
+    SpriteRenderer sprRend;
+    [SerializeField] Sprite notBrewingSprite;
+    [SerializeField] Sprite brewingSprite;
     private void Start()
     {
         var timeKeepGO = GameObject.Find("TimeKeeper");
@@ -18,6 +21,7 @@ public class BrewingPotions : MonoBehaviour, IObserver
         {
             timeKeep = timeKeepGO.GetComponent<TimeKeep>();
         }
+        sprRend = GetComponent<SpriteRenderer>();
     }
     public void Brew()
     {
@@ -27,16 +31,18 @@ public class BrewingPotions : MonoBehaviour, IObserver
             Inventory.instance.flowers.amount += -5;
             Inventory.instance.bottles.amount += -1;
             timeKeep.RegisterObserver(this);
+            sprRend.sprite = brewingSprite;
         }
     }
 
     public void UpdateFromSubject()
     {
         brewingDay++;
-        if (brewingDay == 3)
+        if (brewingDay == 1)
         {
             CreatePotion(redPotion);
             finishedBrewing = true;
+            sprRend.sprite = notBrewingSprite;
         }
     }
 
@@ -44,7 +50,7 @@ public class BrewingPotions : MonoBehaviour, IObserver
     {
         timeKeep.RemoveObserver(this);
         Vector3 potionPosision = transform.position;
-        potionPosision.y += 3;
+        potionPosision.y += 1.5f;
         RedPotion potion;
         if (myPotion == null)
         { potion = Instantiate<RedPotion>(redPotion, potionPosision, Quaternion.identity, transform);
@@ -64,6 +70,7 @@ public class BrewingPotions : MonoBehaviour, IObserver
            
             brewingDay = 0;
             myPotion.AddMyselfToInventory();
+            
 
             finishedBrewing = false;
         }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,14 +9,17 @@ public class Shop : MonoBehaviour
 {
     List<InventoryItem> shopItemList;
     List<InventoryItem> playerItemList;
-    [SerializeField] Button shopButton;
+    [SerializeField] ShopItemButton shopButton;
     [SerializeField] GameObject shopItems;
     [SerializeField] GameObject playerItems;
     [SerializeField] GameObject shopUI;
+    [SerializeField] GameObject player;
 
     [SerializeField] InventoryItem bottles;
     [SerializeField] InventoryItem seeds;
-    List<Button> shopButtons = new List<Button>();
+
+    Button currentButton;
+
     // Start is called before the first frame update
 
 
@@ -39,14 +43,9 @@ public class Shop : MonoBehaviour
         foreach (InventoryItem item in shopItemList)
         {
 
-            Button item1 = Instantiate(shopButton, shopItems.transform);
-
-
-            Text[] namePrice = item1.GetComponentsInChildren<Text>();
-            namePrice[0].text = item.name;
-            namePrice[1].text = item.price.ToString() + " G";
-            shopButtons.Add(item1);
-
+            ShopItemButton item1 = Instantiate(shopButton, shopItems.transform);
+            item1.item = item;
+            item1.SetButton();
         }
 
     }
@@ -55,21 +54,34 @@ public class Shop : MonoBehaviour
         if (shopUI.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
             { 
             shopUI.SetActive(false);
+            
+            player.GetComponent<PlayerController>().enabled = true;
+            Time.timeScale = 1;
         }
+      
     }
 
     public void EnterShop()
     {
         shopUI.SetActive(true);
+
+        player.GetComponent<PlayerController>().enabled = false;
+        Time.timeScale = 0;
+    
+
         playerItemList.Clear();
         foreach (Transform child in playerItems.transform)
         {
             GameObject.Destroy(child.gameObject);
+        
         }
+     
 
         foreach (InventoryItem item in Inventory.instance.items )
         {
-            if (item.amount > 0 && !shopItemList.Contains(item as InventoryItem))
+            if ( (item.amount > 0) && !(shopItemList.Where(x => x.name == item.name).Count() > 0))
+           
+              
             {
                 playerItemList.Add(item);
             }
@@ -77,27 +89,44 @@ public class Shop : MonoBehaviour
         }
         foreach(InventoryItem item in playerItemList)
         {
-            Button item1 = Instantiate(shopButton, playerItems.transform);
+            ShopItemButton item1 = Instantiate(shopButton, playerItems.transform);
+            item1.item = item;
+            item1.SetButton();
 
-
-            Text[] namePrice = item1.GetComponentsInChildren<Text>();
-            namePrice[0].text = item.name;
-            namePrice[1].text = item.price.ToString() + " G";
-            shopButtons.Add(item1);
         }
+
+        //currentButton = shopButtons[0];
+       // currentButton.Select();
     }
 
-    void Buy(InventoryItem item)
+   public void Buy(ShopItemButton itemButton)
+
     {
-        if (Inventory.instance.money > item.price)
+        bool buying = false;
+        if (itemButton.transform.parent == shopItems.transform)
+            buying = true;
+
+        if (buying == true)
         {
-            Inventory.instance.money -= item.price;
-            Inventory.instance.Add(item);
+            if (Inventory.instance.money >= itemButton.item.price)
+            {
+                Inventory.instance.money -= itemButton.item.price;
+                Inventory.instance.Add(Inventory.instance.items.FirstOrDefault(x => x.name == itemButton.item.name));
+            }
         }
+        else
+            Sell(itemButton.item);
+        
     }
-    void Sell(InventoryItem item)
+   public void Sell(InventoryItem item)
     {
-        Inventory.instance.money += item.price;
-        Inventory.instance.Remove(item,1);
+        if(Inventory.instance.items.FirstOrDefault(x => x.name == item.name).amount>0)
+        {
+            Inventory.instance.money += item.price;
+            Inventory.instance.Remove(Inventory.instance.items.FirstOrDefault(x => x.name == item.name), 1);
+        }
+        
     }
+
+
 }
