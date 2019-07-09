@@ -92,6 +92,7 @@ public class Shop : MonoBehaviour
             ShopItemButton item1 = Instantiate(shopButton, playerItems.transform);
             item1.item = item;
             item1.SetButton();
+            item1.GetComponentInChildren<Text>().text = item.name + " x" + item.amount;
 
         }
 
@@ -115,7 +116,10 @@ public class Shop : MonoBehaviour
                 Inventory.instance.Add(theItem);
             }
         }
-        else { Sell(theItem); }
+        else { Sell(theItem);
+            itemButton.GetComponentInChildren<Text>().text = theItem.name + " x" + theItem.amount;
+
+        }
           
         
     }
