@@ -22,20 +22,21 @@ public class TimeKeep : MonoBehaviour, ISubject
 
     private void Update()
     {
-        currentTimeOfDay += (Time.deltaTime / secondsInFullDay) * timeMultiplier;
-        if (currentTimeOfDay >= 1)
-        {
-            ChangeDate();
-            currentTimeOfDay = 0;
-        }
+        //currentTimeOfDay += (Time.deltaTime / secondsInFullDay) * timeMultiplier;
+        //if (currentTimeOfDay >= 1)
+        //{
+        //    ChangeDate();
+        //    currentTimeOfDay = 0;
+        //}
     }
 
     public void ChangeDate()
     {
         day++;
         ShowUIThings.instance.dayCount.text = "Day: " + day;
-         foreach (IObserver observer in timeDependant)
+        for (int i = timeDependant.Count-1; i >= 0; i--)
         {
+            IObserver observer = timeDependant[i];
             NotifyObserver(observer);
         }
         

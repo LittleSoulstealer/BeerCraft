@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
 
         items.Add(seeds);
         items.Add(bottles);
-        flowers.amount = 20;
+        
  
 
 
@@ -48,7 +48,16 @@ public class Inventory : MonoBehaviour
     public void Add(InventoryItem item)
     {
         item.gameObject.SetActive(false);
-        item.amount += 1;
+        var itemOnList = items.FirstOrDefault(x => x.name == item.name);
+        if (itemOnList != null)
+        {
+            itemOnList.amount++;
+        }
+        else
+        {
+            items.Add(item);
+            item.amount++;
+        }
     }
     public void Remove(InventoryItem item, int amount)
     {

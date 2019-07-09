@@ -38,7 +38,7 @@ public class BrewingPotions : MonoBehaviour, IObserver
     public void UpdateFromSubject()
     {
         brewingDay++;
-        if (brewingDay == 1)
+        if (brewingDay == 3)
         {
             CreatePotion(redPotion);
             finishedBrewing = true;

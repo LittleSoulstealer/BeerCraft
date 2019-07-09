@@ -8,7 +8,7 @@ public class PickableFruit : InventoryItem
     public Plant myPlant;
     public override void AddMyselfToInventory()
     {
-        this.transform.parent = Inventory.instance.transform;
+      // this.transform.parent = Inventory.instance.transform;
         if (myPlant.isActiveAndEnabled)
         {
             myPlant.FreeSpace();

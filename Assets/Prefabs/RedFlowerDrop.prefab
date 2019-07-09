@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4531725516483773580}
   - component: {fileID: 2585274943299739556}
   m_Layer: 8
-  m_Name: RedFlowerFruit
+  m_Name: RedFlowerDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad94d56431fe3224b8d793a6d579a9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Red Flower Fruit
+  name: Red Flower
   sprite: {fileID: 0}
   price: 10
   amount: 0

@@ -103,27 +103,28 @@ public class Shop : MonoBehaviour
 
     {
         bool buying = false;
+        InventoryItem theItem = Inventory.instance.items.FirstOrDefault(x => x.name == itemButton.item.name);
         if (itemButton.transform.parent == shopItems.transform)
             buying = true;
-
+       
         if (buying == true)
         {
-            if (Inventory.instance.money >= itemButton.item.price)
+            if (Inventory.instance.money >= theItem.price)
             {
-                Inventory.instance.money -= itemButton.item.price;
-                Inventory.instance.Add(Inventory.instance.items.FirstOrDefault(x => x.name == itemButton.item.name));
+                Inventory.instance.money -= theItem.price;
+                Inventory.instance.Add(theItem);
             }
         }
-        else
-            Sell(itemButton.item);
+        else { Sell(theItem); }
+          
         
     }
    public void Sell(InventoryItem item)
     {
-        if(Inventory.instance.items.FirstOrDefault(x => x.name == item.name).amount>0)
+        if(item.amount>0)
         {
             Inventory.instance.money += item.price;
-            Inventory.instance.Remove(Inventory.instance.items.FirstOrDefault(x => x.name == item.name), 1);
+            Inventory.instance.Remove(item, 1);
         }
         
     }

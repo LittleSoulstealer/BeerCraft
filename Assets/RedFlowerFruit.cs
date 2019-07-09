@@ -9,9 +9,5 @@ public class RedFlowerFruit : PickableFruit
         name = "Red Flower";
         price = 50;
     }
-    public override void AddMyselfToInventory()
-    {
-        Inventory.instance.flowers.amount += 1;
-        base.AddMyselfToInventory();
-    }
+  
 }

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Red Potion
   sprite: {fileID: 21300000, guid: 6796c2570d06b494695f7596d51f9615, type: 3}
-  price: 100
+  price: 50
   amount: 0
 --- !u!212 &3601570047447774886
 SpriteRenderer:
