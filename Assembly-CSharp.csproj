@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{E0B6A2D5-359C-E410-862E-66F1383F9D0E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -63,7 +64,6 @@
     <Compile Include="Assets\ActionCollider.cs" />
     <Compile Include="Assets\Bottles.cs" />
     <Compile Include="Assets\BrewingPotions.cs" />
-    <Compile Include="Assets\Code\BlueFlower.cs" />
     <Compile Include="Assets\Code\Interfaces\IObserver.cs" />
     <Compile Include="Assets\Code\Interfaces\ISubject.cs" />
     <Compile Include="Assets\Code\Inventory\InventoryUI.cs" />
