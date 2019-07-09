@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour
                     {
                         actionCollider.collidingGO = null;
                     }
+                    actionCollider.collidingGO = null;
                 }
             }
 
