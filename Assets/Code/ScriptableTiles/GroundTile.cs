@@ -82,6 +82,7 @@ public class GroundTile : Tile
         base.RefreshTile(position, tilemap);
     }
 
+#if UNITY_EDITOR
     [MenuItem("Assets/MyGame/GroundTile")]
     public static void CreateGroundTile()
     {
@@ -90,4 +91,5 @@ public class GroundTile : Tile
             return;
         AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<GroundTile>(), path);
     }
+#endif
 }
