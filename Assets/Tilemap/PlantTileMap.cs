@@ -7,7 +7,7 @@ public class PlantTileMap : MonoBehaviour, IObserver
 {
     Tilemap tileMap;
   public GridLayout grid;
-    TimeKeep timeKeep;
+
 
     public void Start()
     {
@@ -27,12 +27,7 @@ public class PlantTileMap : MonoBehaviour, IObserver
             }
         }
 
-        var timeKeepGO = GameObject.Find("TimeKeeper");
-        if (timeKeepGO != null)
-        {
-            timeKeep = timeKeepGO.GetComponent<TimeKeep>();
-            timeKeep.RegisterObserver(this);
-        }
+       
     }
 
     public void UpdateFromSubject()
@@ -42,7 +37,7 @@ public class PlantTileMap : MonoBehaviour, IObserver
             GroundTile t = (GroundTile)tileMap.GetTile(position);
             if (!Equals(t, null))
             {
-                    t.DryGround();  
+                    
             }
         }
         tileMap.RefreshAllTiles();
