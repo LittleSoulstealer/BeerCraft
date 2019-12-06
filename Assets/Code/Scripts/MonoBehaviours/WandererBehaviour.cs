@@ -17,7 +17,7 @@ public class WandererBehaviour : MonoBehaviour
     public bool followPlayer;
     Coroutine moveCoroutine;
     Rigidbody2D rb2d;
-    // Animator animator;
+     Animator animator;
     Transform targetTransform = null;
     Vector3 endPosition;
     float currentAngle = 0;
@@ -27,7 +27,7 @@ public class WandererBehaviour : MonoBehaviour
 
     private void Start()
     {
-        // animator = GetComponent<Animator>();
+         animator = GetComponent<Animator>();
         currentSpeed = wandererSpeed;
         rb2d = GetComponent<Rigidbody2D>();
         StartCoroutine(WandererCoroutine());
@@ -91,7 +91,8 @@ public class WandererBehaviour : MonoBehaviour
         rb2d.velocity = (direction * currentSpeed);
       
 
-        //    animator.SetBool("isWalking", false);
+         animator.SetFloat("x", direction.x);
+        animator.SetFloat("y", direction.y);
     }
 
 
@@ -109,7 +110,7 @@ public class WandererBehaviour : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //  animator.SetBool("isWalking",false);
+           
             currentSpeed = wandererSpeed;
             targetTransform = null;
             rb2d.velocity = Vector2.zero;
