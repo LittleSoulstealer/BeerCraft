@@ -2,9 +2,9 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+
 [RequireComponent(typeof(CircleCollider2D))]
-[RequireComponent(typeof(Animator))]
+
 
 public class WandererBehaviour : MonoBehaviour
 {
@@ -27,11 +27,13 @@ public class WandererBehaviour : MonoBehaviour
 
     private void Start()
     {
-         animator = GetComponent<Animator>();
+         animator = GetComponentInParent<Animator>();
         currentSpeed = wandererSpeed;
-        rb2d = GetComponent<Rigidbody2D>();
+        rb2d = transform.GetComponentInParent<Rigidbody2D>();
         StartCoroutine(WandererCoroutine());
         circleCollider = GetComponent<CircleCollider2D>();
+
+
     }
 
     void Update()

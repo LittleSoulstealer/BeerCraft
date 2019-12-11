@@ -15,6 +15,7 @@ public class PlayerController : Character
     Rigidbody2D myRigidbody;
     bool playerMoving;
     Vector2 lastMove;
+    public GameObject magicBulletSpawnPoint;
     //RaycastHit2D hit;
 
     ActionCollider actionCollider;
@@ -58,6 +59,8 @@ public class PlayerController : Character
         Moving();
         Action();
         CastSpell();
+        
+
     }
 
     void Moving()
@@ -71,6 +74,7 @@ public class PlayerController : Character
             myRigidbody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, myRigidbody.velocity.y);
             lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
             actionCollider.gameObject.transform.position = transform.position + (Vector3)lastMove;
+
         }
         else
             myRigidbody.velocity = new Vector2(0f, myRigidbody.velocity.y);
@@ -83,9 +87,12 @@ public class PlayerController : Character
             lastMove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
             actionCollider.gameObject.transform.position = transform.position + (Vector3)lastMove;
 
+
         }
         else
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0f);
+
+        SetMagicBulletSpawPointTransformPosition();
 
         anim.SetFloat("moveX", Input.GetAxisRaw("Horizontal"));
         anim.SetFloat("moveY", Input.GetAxisRaw("Vertical"));
@@ -95,6 +102,17 @@ public class PlayerController : Character
 
     }
 
+    private void SetMagicBulletSpawPointTransformPosition()
+    {
+        if (lastMove.y != 0)
+        {
+            magicBulletSpawnPoint.transform.localPosition = new Vector3(0, 0.7f, 0);
+        }
+        else
+        {
+            magicBulletSpawnPoint.transform.localPosition = new Vector3(0.7f * lastMove.x, 0.7f, 0);
+        }
+    }
 
     void Action()
     {
@@ -139,8 +157,8 @@ public class PlayerController : Character
             if (Input.GetKeyDown("space"))
             {
                 GameObject magicBulletObject = Instantiate(magicBulletPrefab);
-                magicBulletObject.transform.position = transform.position + (Vector3)(lastMove)+Vector3.up;
-                
+                magicBulletObject.transform.position = magicBulletSpawnPoint.transform.position;
+                magicBulletObject.GetComponent<MagicBullet>().Cast(lastMove);
             }
         }
 
