@@ -17,6 +17,7 @@ public class PlayerController : Character
     Vector2 lastMove;
     public GameObject magicBulletSpawnPoint;
     //RaycastHit2D hit;
+    List<GameObject> bulletObjectPool;
 
     ActionCollider actionCollider;
     GameObject acgo;
@@ -29,9 +30,8 @@ public class PlayerController : Character
 
         actionCollider = GetComponentInChildren<ActionCollider>();
         acgo = actionCollider.gameObject;
-
-
-
+        bulletObjectPool = new List<GameObject>();
+        FillObjectPool();
     }
     public override IEnumerator DamageCharacter(int damage, float interval)
     {
@@ -61,6 +61,16 @@ public class PlayerController : Character
         CastSpell();
         
 
+    }
+
+    void FillObjectPool()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            GameObject magicBulletObject = Instantiate(magicBulletPrefab);
+            magicBulletObject.SetActive(false);
+            bulletObjectPool.Add(magicBulletObject);
+        }
     }
 
     void Moving()
@@ -140,10 +150,6 @@ public class PlayerController : Character
                     actionCollider.collidingGO = null;
                 }*/
             }
-
-
-
-
         }
 
     public override void ResetCharacter()
@@ -156,11 +162,23 @@ public class PlayerController : Character
         {
             if (Input.GetKeyDown("space"))
             {
-                GameObject magicBulletObject = Instantiate(magicBulletPrefab);
-                magicBulletObject.transform.position = magicBulletSpawnPoint.transform.position;
-                magicBulletObject.GetComponent<MagicBullet>().Cast(lastMove);
+                GameObject bullet = RetrieveBulletFromPool();
+                bullet.SetActive(true);
+                bullet.transform.position = magicBulletSpawnPoint.transform.position;
+                bullet.GetComponent<MagicBullet>().Cast(lastMove);
             }
         }
 
+    }
+
+    GameObject RetrieveBulletFromPool()
+    {
+        for (int i = 0; i < bulletObjectPool.Count; i++)
+        {
+            if(!bulletObjectPool[i].activeInHierarchy)
+            { return bulletObjectPool[i]; }
+        }
+        bulletObjectPool.Add(Instantiate(magicBulletPrefab));
+        return bulletObjectPool[bulletObjectPool.Count - 1];
     }
 }

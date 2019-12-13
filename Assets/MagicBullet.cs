@@ -17,6 +17,9 @@ public class MagicBullet : MonoBehaviour
     public void Cast(Vector2 dir)
     {
         rb.velocity = dir * speed;
+        StartCoroutine("Deactivate");
+       
+       
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,5 +30,11 @@ public class MagicBullet : MonoBehaviour
             StartCoroutine(enemy.DamageCharacter(damageInflicted, 0.0f));
             gameObject.SetActive(false);
         }
+    }
+
+    IEnumerator Deactivate()
+    {
+        yield return new WaitForSeconds(1);
+        gameObject.SetActive(false);
     }
 }
