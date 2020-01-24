@@ -49,6 +49,7 @@ public class WandererBehaviour : MonoBehaviour
         {
             
             rb2d.velocity = Vector2.zero;
+            animator.SetBool("isMoving", false);
         }
     }
 
@@ -62,6 +63,7 @@ public class WandererBehaviour : MonoBehaviour
         while (true)
         {
             ChooseNewEndpoint();
+            animator.SetBool("isMoving", true);
             Move();
             yield return new WaitForSeconds(directionChangeInterval);
         }
