@@ -11,6 +11,8 @@ public class PlayerController : Character
     public HitPoints hitPoints;
     public GameObject magicBulletPrefab;
     public float moveSpeed;
+  
+    [SerializeField] HealthMeter healthMeter;
     private Animator anim;
     Rigidbody2D myRigidbody;
     bool playerMoving;
@@ -29,7 +31,7 @@ public class PlayerController : Character
 
         actionCollider = GetComponentInChildren<ActionCollider>();
         acgo = actionCollider.gameObject;
-
+        healthMeter.character = this;
 
 
     }
@@ -53,6 +55,14 @@ public class PlayerController : Character
                 break;
             }
         }
+    }
+
+    private void Start()
+    {
+        
+
+        hitPoints.value = startingHitPoints;
+       
     }
     void Update()
     {
