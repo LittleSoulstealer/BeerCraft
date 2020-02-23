@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -64.2}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 1280, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1212572827
 CanvasRenderer:
@@ -73,7 +73,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 194
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -267,7 +267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5039760162804686601
 RectTransform:
   m_ObjectHideFlags: 0
@@ -287,7 +287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 255.59998}
+  m_AnchoredPosition: {x: 0, y: 322}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5039760163131755517
@@ -324,7 +324,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.8, y: -327.39996}
+  m_AnchoredPosition: {x: 0.8, y: -440}
   m_SizeDelta: {x: 858, y: 524.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5039760163131755264
@@ -367,8 +367,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1.5
-  m_Text: 'Move: WASD
+    m_LineSpacing: 1.11
+  m_Text: 'Move: WASD / Arrow keys
 
     Run: Shift
 
@@ -616,8 +616,6 @@ MonoBehaviour:
   playerPrefab: {fileID: 4610595121491275981, guid: ff253e3aa800f2e4d8a4471b509b2176,
     type: 3}
   timer: {fileID: 473216608151415157}
-  camMenager: {fileID: 7057638876794318200, guid: 01cffc8f6fc418644b36b2030f87bd0d,
-    type: 3}
   score: {fileID: 11400000, guid: 305972d3d3fb1424285262f8e50bf7cb, type: 2}
 --- !u!1 &5039760163751314941
 GameObject:
@@ -732,7 +730,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -49.999977}
+  m_AnchoredPosition: {x: 0, y: -205}
   m_SizeDelta: {x: 418.4, y: 152.09998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5039760163923226454
@@ -855,7 +853,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
-  m_Text: Press R key to restart
+  m_Text: Press key to restart
 --- !u!1 &5039760164544172169
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,7 +932,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
-  m_Text: Press R key to start
+  m_Text: Press R to start
 --- !u!1 &6296114969793422495
 GameObject:
   m_ObjectHideFlags: 0

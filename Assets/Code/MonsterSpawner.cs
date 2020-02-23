@@ -11,7 +11,10 @@ public class MonsterSpawner : MonoBehaviour
     [SerializeField] GameObject player;
     public Timer timer;
     float intervalBetweenMonsters;
-   public List<Enemy> livingMonsters;
+    public float  startingIntervalBetweenMonsters;
+    public List<Enemy> livingMonsters;
+    static public List<Healing> hearts = new List<Healing>();
+
 
 
     private void Start()
@@ -19,11 +22,15 @@ public class MonsterSpawner : MonoBehaviour
         livingMonsters = new List<Enemy>();
         spawnPos = new Vector2();
         area = GetComponent<BoxCollider2D>();
-        intervalBetweenMonsters = 4.6f;
+        ResetInterval();
         StartCoroutine(SpawnMonster());
         StartCoroutine(IntervalDecrease());
     }
     
+    public void ResetInterval()
+    {
+        intervalBetweenMonsters = startingIntervalBetweenMonsters;
+    }
     IEnumerator SpawnMonster()
     {
        while(true)
@@ -50,9 +57,11 @@ public class MonsterSpawner : MonoBehaviour
         spawnPos.x = Random.Range(area.offset.x-area.size.x/2f, area.offset.x + area.size.x / 2f);
         spawnPos.y = Random.Range(area.offset.y - area.size.y / 2f, area.offset.y + area.size.y / 2f);
         spawnPos += transform.position;
-        if(Vector3.Distance(player.transform.position,spawnPos) < 7f)
+        if(Vector3.Distance(player.transform.position,spawnPos) < 10f)
         {
-            SpawnPosition();
+            spawnPos.x = Random.Range(area.offset.x - area.size.x / 2f, area.offset.x + area.size.x / 2f);
+            spawnPos.y = Random.Range(area.offset.y - area.size.y / 2f, area.offset.y + area.size.y / 2f);
+            spawnPos += transform.position;
         }
         return spawnPos;
        
@@ -66,7 +75,16 @@ public class MonsterSpawner : MonoBehaviour
             { Destroy(monster.gameObject); }
 
         }
-        Debug.Log(livingMonsters.Count);
         livingMonsters.Clear();
+    }
+    public void DestroyLoot()
+    {
+        foreach (var loot  in hearts)
+        {
+            if (loot != null)
+            { Destroy(loot.gameObject); }
+
+        }
+    
     }
 }

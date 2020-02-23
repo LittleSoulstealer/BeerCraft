@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8915206877413585935
 Transform:
   m_ObjectHideFlags: 0
@@ -48,6 +48,8 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 4610595121491275986, guid: ff253e3aa800f2e4d8a4471b509b2176, type: 3}
   timer: {fileID: 2388043725826710275, guid: c5639ac788cfaf4479fdffc3b42642b9, type: 3}
+  startingIntervalBetweenMonsters: 4.3
+  livingMonsters: []
 --- !u!61 &8915206877413585934
 BoxCollider2D:
   m_ObjectHideFlags: 0

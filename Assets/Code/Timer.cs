@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         minutes = 0;
-        seconds = -1;
+        seconds = 0;
         StartCoroutine(SecondsCounterCoroutine());
     }
 
@@ -23,21 +23,36 @@ public class Timer : MonoBehaviour
     {
         while(true)
         {
-            seconds += 1;
-            score.value += 1;
+            
             if(seconds==60)
             {
                 seconds = 0;
                 minutes = 1;
             }
          
-            timerText.text = minutes.ToString() +" : "+ seconds.ToString();
+            if(minutes<10)
+            {
+                timerText.text = "0"+ minutes.ToString();
+            }else
+            {
+                timerText.text = minutes.ToString();
+            }
+            if (seconds < 10)
+            {
+                timerText.text += " : 0" + seconds.ToString();
+            }
+            else
+            {
+                timerText.text += " : "+ seconds.ToString();
+            }
+            seconds += 1;
+            score.value += 1;
             yield return new WaitForSeconds(1);
         }
     }
   public void ResetTimer()
     {
-        seconds = -1;
+        seconds = 0;
         minutes = 0;
     }
 

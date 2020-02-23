@@ -1,5 +1,5 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -11,6 +11,8 @@ public class Enemy : Character
    [SerializeField] Healing heartDropPrefab;
     Healing heartDrop;
     public Score score;
+  
+
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -81,6 +83,7 @@ public class Enemy : Character
         {
             heartDrop =Instantiate(heartDropPrefab);
             heartDrop.transform.position = transform.position;
+            MonsterSpawner.hearts.Add(heartDrop);
         }
     }
 }

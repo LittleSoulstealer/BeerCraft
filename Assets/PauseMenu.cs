@@ -70,6 +70,8 @@ public class PauseMenu : MonoBehaviour
             monsterSpawner.gameObject.SetActive(true);
             RPGCameraManager.sharedInstance.virtualCamera.Follow = player.transform;
             monsterSpawner.KillAllMonsters();
+            monsterSpawner.DestroyLoot();
+            monsterSpawner.ResetInterval();
             score.value = 0;
             Time.timeScale = 1f;
         }
