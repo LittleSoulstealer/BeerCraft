@@ -23,13 +23,7 @@ public class Timer : MonoBehaviour
     {
         while(true)
         {
-            
-            if(seconds==60)
-            {
-                seconds = 0;
-                minutes = 1;
-            }
-         
+
             if(minutes<10)
             {
                 timerText.text = "0"+ minutes.ToString();
@@ -47,6 +41,11 @@ public class Timer : MonoBehaviour
             }
             seconds += 1;
             score.value += 1;
+            if (seconds == 60)
+            {
+                seconds = 0;
+                minutes += 1;
+            }
             yield return new WaitForSeconds(1);
         }
     }
