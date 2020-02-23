@@ -204,12 +204,11 @@ MonoBehaviour:
   moveSpeed: 5
   walkingSpeed: 5
   runningSpeed: 10
-  pauseMenu: {fileID: 5039760163713951368, guid: 40849d7b2854eac4fa32456d8b7a6eef,
-    type: 3}
   healthMeterPrefab: {fileID: 4991434106428046570, guid: d26b30669771a024493002f68be72290,
     type: 3}
   StaminaBarPrefab: {fileID: 6738814726403357793, guid: b4c97fde9c2adcf45b3f52d01240a53f,
     type: 3}
+  isKilled: 0
   magicBulletSpawnPoint: {fileID: 4610595122239719018}
 --- !u!95 &4610595121491275982
 Animator:
