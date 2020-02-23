@@ -202,7 +202,7 @@ MonoBehaviour:
   magicBulletPrefab: {fileID: 3662048622335498163, guid: 78bee47e7cea34d45b9b090455e764b7,
     type: 3}
   moveSpeed: 5
-  walkingSpeed: 5
+  walkingSpeed: 6
   runningSpeed: 10
   healthMeterPrefab: {fileID: 4991434106428046570, guid: d26b30669771a024493002f68be72290,
     type: 3}

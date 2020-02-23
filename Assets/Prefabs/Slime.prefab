@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5a38f86d061e843b55e2fd45de7904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoints: 5
-  startingHitPoints: 5
+  maxHitPoints: 3
+  startingHitPoints: 3
   characterCategory: 1
   damageStrenght: 1
   heartDropPrefab: {fileID: 4325709147378122748, guid: c58bb131224870d44994936f513673e1,
@@ -220,6 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pursuitSpeed: 3.5
-  wandererSpeed: 1
+  wandererSpeed: 2
   directionChangeInterval: 4
   followPlayer: 1

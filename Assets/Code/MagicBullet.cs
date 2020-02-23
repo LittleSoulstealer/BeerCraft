@@ -38,7 +38,7 @@ public class MagicBullet : MonoBehaviour
 
     IEnumerator Deactivate()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
         gameObject.SetActive(false);
     }
 }
