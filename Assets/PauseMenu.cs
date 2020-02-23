@@ -44,7 +44,7 @@ public class PauseMenu : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Y))
             {
                 Debug.Log("Quit");
-                // Application.Quit();
+                Application.Quit();
             }
             else if (Input.GetKeyDown(KeyCode.N))
             {
