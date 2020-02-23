@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject controls;
     [SerializeField] GameObject gameOver;
     [SerializeField] GameObject pauseScreen;
+    [SerializeField] GameObject quitScreen;
     [SerializeField] MonsterSpawner monsterSpawnerPrefab;
     MonsterSpawner monsterSpawner;
 
@@ -15,9 +16,9 @@ public class PauseMenu : MonoBehaviour
     PlayerController player;
     public PlayerController playerPrefab;
     [SerializeField] Timer timer;
-    public RPGCameraManager camMenager;
     public Score score;
      Text gameOverScore;
+    bool isQuitting;
     
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class PauseMenu : MonoBehaviour
         monsterSpawner = Instantiate(monsterSpawnerPrefab);
         monsterSpawner.gameObject.SetActive(false);
         gameOverScore = gameOver.GetComponentInChildren<Text>();
-        gameOverScore.text = "aaa";
+     
     }
 
     // Update is called once per frame
@@ -34,12 +35,31 @@ public class PauseMenu : MonoBehaviour
     {
         PauseGame();
         RestartGame();
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameQuitting();
+        }
+        if(isQuitting&& !isInPauseMenu)
+        {
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                Debug.Log("Quit");
+                // Application.Quit();
+            }
+            else if (Input.GetKeyDown(KeyCode.N))
+            {
+                isQuitting = false;
+                quitScreen.SetActive(false);
+                pauseScreen.SetActive(false);
+                isInPauseMenu = false;
+                Time.timeScale = 1f;
+            }
+        }
     }
 
     void RestartGame()
     {
-
-        if (isInPauseMenu && Input.GetKeyDown(KeyCode.R))
+        if (isInPauseMenu && !isQuitting && Input.GetKeyDown(KeyCode.R))
         {
             isInPauseMenu = false;
             player = Instantiate(playerPrefab);
@@ -48,43 +68,47 @@ public class PauseMenu : MonoBehaviour
             pauseScreen.SetActive(false);
             isGameOver = true;
             monsterSpawner.gameObject.SetActive(true);
-            camMenager.virtualCamera.Follow = player.transform;
+            RPGCameraManager.sharedInstance.virtualCamera.Follow = player.transform;
             monsterSpawner.KillAllMonsters();
             score.value = 0;
             Time.timeScale = 1f;
-
         }
 
     }
 
     public void PauseGame()
     {
-        if(!isInPauseMenu&&(player==null||player.isKilled))
+        if((!isInPauseMenu&&(player==null||player.isKilled)&&!isQuitting))
         {
             isInPauseMenu = true;
             pauseScreen.SetActive(true);
             Time.timeScale = 0f;
-
-            if (isGameOver)
-            {
-                gameOver.SetActive(true);
-                controls.SetActive(false);
-                gameOverScore.text = "Your score: " + score.value;
-                WaitAfterDeath();
-            }
-            else
-            {
-                gameOver.SetActive(false);
-                controls.SetActive(true);
-            }
-            
+           
+                if (isGameOver)
+                {
+                    gameOver.SetActive(true);
+                    controls.SetActive(false);
+                    gameOverScore.text = "Your score: " + score.value;
+                 
+                }
+                else
+                {
+                    gameOver.SetActive(false);
+                    controls.SetActive(true);
+                }
+                  
         }
-
-
     }
-
-    IEnumerator WaitAfterDeath()
+ public void GameQuitting()
     {
-        yield return new WaitForSecondsRealtime(0.5f);
+        pauseScreen.SetActive(true);
+        gameOver.SetActive(false);
+        controls.SetActive(false);
+        quitScreen.SetActive(true);
+        isQuitting = true;
+        isInPauseMenu = false;
+        Time.timeScale = 0f;
+        
     }
+
 }
