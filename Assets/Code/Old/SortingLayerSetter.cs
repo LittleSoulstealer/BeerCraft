@@ -33,6 +33,11 @@ public class SortingLayerSetter : MonoBehaviour
 
     private int GetBaseHeightInCm()
     {
-        return -(int)transform.position.y*100;
+        if(gameObject.tag =="Player")
+        {
+            return -(int)transform.position.y + 1;
+        }
+        return -(int)transform.position.y;
+
     }
 }

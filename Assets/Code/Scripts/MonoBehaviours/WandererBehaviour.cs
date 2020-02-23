@@ -21,6 +21,8 @@ public class WandererBehaviour : MonoBehaviour
     Transform targetTransform = null;
     Vector3 endPosition;
     float currentAngle = 0;
+    Vector3 playerPosition;
+  
 
     CircleCollider2D circleCollider;
 
@@ -30,10 +32,17 @@ public class WandererBehaviour : MonoBehaviour
          animator = GetComponentInParent<Animator>();
         currentSpeed = wandererSpeed;
         rb2d = transform.GetComponentInParent<Rigidbody2D>();
+        playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         StartCoroutine(WandererCoroutine());
         circleCollider = GetComponent<CircleCollider2D>();
 
 
+
+    }
+    private void Awake()
+    {
+
+      
     }
 
     void Update()
@@ -49,6 +58,7 @@ public class WandererBehaviour : MonoBehaviour
         {
             
             rb2d.velocity = Vector2.zero;
+            animator.SetBool("isMoving", false);
         }
     }
 
@@ -59,9 +69,12 @@ public class WandererBehaviour : MonoBehaviour
     }
     public IEnumerator WandererCoroutine()
     {
+        endPosition = playerPosition;
+
         while (true)
         {
             ChooseNewEndpoint();
+            animator.SetBool("isMoving", true);
             Move();
             yield return new WaitForSeconds(directionChangeInterval);
         }
@@ -72,7 +85,9 @@ public class WandererBehaviour : MonoBehaviour
     {
         currentAngle += UnityEngine.Random.Range(0, 360);
         currentAngle = Mathf.Repeat(currentAngle, 360);
+
         endPosition += Vector3FromAngle(currentAngle);
+ 
     }
 
     Vector3 Vector3FromAngle(float inputAngleDegrees)

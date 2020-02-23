@@ -3,25 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthMeter : MonoBehaviour
+public class StaminaBar : MonoBehaviour
 {
-    public HitPoints hitPoints;
+    public Stamina stamina;
     [HideInInspector] public PlayerController character;
     public Image meter;
-    float maxHitPoints;
+    float maxStamina;
     // Start is called before the first frame update
     void Start()
     {
-        maxHitPoints = character.maxHitPoints;
+        maxStamina = character.maxStamina;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(character!=null)
-            {
-            meter.fillAmount = hitPoints.value / maxHitPoints;
-            
-           }
+        if (character != null)
+        {
+            meter.fillAmount = stamina.value / maxStamina;
+
+        }
+        else
+        {
+            meter.fillAmount = 0f;
+        }
     }
 }

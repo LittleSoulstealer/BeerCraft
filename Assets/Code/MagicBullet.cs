@@ -17,6 +17,9 @@ public class MagicBullet : MonoBehaviour
     public void Cast(Vector2 dir)
     {
         rb.velocity = dir * speed;
+        StartCoroutine("Deactivate");
+       
+       
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,8 +27,18 @@ public class MagicBullet : MonoBehaviour
         if(collision.gameObject.tag =="Enemy")
         {
             Enemy enemy =collision.gameObject.GetComponent<Enemy>();
-            StartCoroutine(enemy.DamageCharacter(damageInflicted, 0.0f));
-            gameObject.SetActive(false);
+            if(gameObject.activeSelf)
+                {
+                StartCoroutine(enemy.DamageCharacter(damageInflicted, 0.0f));
+                gameObject.SetActive(false);
+            }
+            
         }
+    }
+
+    IEnumerator Deactivate()
+    {
+        yield return new WaitForSeconds(0.5f);
+        gameObject.SetActive(false);
     }
 }

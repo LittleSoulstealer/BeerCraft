@@ -2,11 +2,16 @@
 using System.Collections;
 using UnityEngine;
 
+
 public class Enemy : Character
 {
     float hitPoints;
     public int damageStrenght;
     Coroutine damageCoroutine;
+   [SerializeField] Healing heartDropPrefab;
+    Healing heartDrop;
+    public Score score;
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -61,5 +66,21 @@ public class Enemy : Character
     private void OnEnable()
     {
         ResetCharacter();
+    }
+
+    public override void KillCharacter()
+    {
+        DropLoot();
+        score.value += 5;
+        base.KillCharacter();
+    }
+
+    void DropLoot()
+    {
+        if (Random.Range(0f,100f)<=25)
+        {
+            heartDrop =Instantiate(heartDropPrefab);
+            heartDrop.transform.position = transform.position;
+        }
     }
 }

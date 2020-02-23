@@ -4,7 +4,7 @@ using UnityEngine;
 public class RPGCameraManager : MonoBehaviour
 {
     public static RPGCameraManager sharedInstance = null;
-    [HideInInspector] public CinemachineVirtualCamera virtualCamera;
+    public CinemachineVirtualCamera virtualCamera;
 
     private void Awake()
     {

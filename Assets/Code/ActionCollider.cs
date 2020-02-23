@@ -18,7 +18,7 @@ public class ActionCollider : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     { 
-        Debug.Log(collision+" Enter.");
+
         if(collision.gameObject.name == "PlantGround")
         {
         }
@@ -26,7 +26,6 @@ public class ActionCollider : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log(collision +" Exit.");
         if (collision.gameObject.name == "PlantGround")
         {
         }

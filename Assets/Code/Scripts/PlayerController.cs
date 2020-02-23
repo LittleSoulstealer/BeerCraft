@@ -2,23 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Cinemachine;
 
 public class PlayerController : Character
 
 {
-   
+
 
     public HitPoints hitPoints;
+    public Stamina stamina;
+    public float maxStamina;
+    float startingStamina;
+    public float staminaLoss;
+    public float staminaGain;
     public GameObject magicBulletPrefab;
     public float moveSpeed;
-  
-    [SerializeField] HealthMeter healthMeter;
+    public float walkingSpeed;
+    public float runningSpeed;
+   public HealthMeter healthMeterPrefab;
+   public StaminaBar StaminaBarPrefab;
+    public bool isKilled;
+
+
+
+     HealthMeter healthMeter;
+    StaminaBar staminaBar;
     private Animator anim;
     Rigidbody2D myRigidbody;
     bool playerMoving;
     Vector2 lastMove;
     public GameObject magicBulletSpawnPoint;
     //RaycastHit2D hit;
+    List<GameObject> bulletObjectPool;
+
 
     ActionCollider actionCollider;
     GameObject acgo;
@@ -31,9 +47,11 @@ public class PlayerController : Character
 
         actionCollider = GetComponentInChildren<ActionCollider>();
         acgo = actionCollider.gameObject;
-        healthMeter.character = this;
+    
+        startingStamina = maxStamina;
 
-
+        bulletObjectPool = new List<GameObject>();
+        FillObjectPool();
     }
     public override IEnumerator DamageCharacter(int damage, float interval)
     {
@@ -43,9 +61,11 @@ public class PlayerController : Character
             hitPoints.value = hitPoints.value - damage;
             if (hitPoints.value <= float.Epsilon)
             {
+               
                 KillCharacter();
                 break;
             }
+
             if (interval > float.Epsilon)
             {
                 yield return new WaitForSeconds(interval);
@@ -53,24 +73,49 @@ public class PlayerController : Character
             else
             {
                 break;
+
             }
         }
     }
 
+
     private void Start()
     {
-        
-
-        hitPoints.value = startingHitPoints;
-       
     }
     void Update()
     {
+        Running();
         Moving();
         Action();
         CastSpell();
-        
+       
 
+    }
+void Running()
+    {
+        if(stamina.value>=Mathf.Epsilon && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
+        {
+            moveSpeed = runningSpeed;
+            stamina.value -= staminaLoss * Time.deltaTime;
+        }
+        else
+        {
+            moveSpeed = walkingSpeed;
+            if(stamina.value<=maxStamina)
+            {
+                stamina.value += staminaGain * Time.deltaTime;
+            }
+         
+        }
+    }
+    void FillObjectPool()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            GameObject magicBulletObject = Instantiate(magicBulletPrefab);
+            magicBulletObject.SetActive(false);
+            bulletObjectPool.Add(magicBulletObject);
+        }
     }
 
     void Moving()
@@ -150,15 +195,28 @@ public class PlayerController : Character
                     actionCollider.collidingGO = null;
                 }*/
             }
-
-
-
-
         }
 
     public override void ResetCharacter()
     {
-        throw new System.NotImplementedException();
+       
+        healthMeter = Instantiate(healthMeterPrefab);
+        staminaBar = Instantiate(StaminaBarPrefab);
+
+        hitPoints.value = startingHitPoints;
+        stamina.value = startingStamina;
+        healthMeter.character = this;
+        staminaBar.character = this;
+       
+    }
+    public override void KillCharacter()
+    {
+        Destroy(healthMeter.gameObject);
+        Destroy(staminaBar.gameObject);
+        isKilled = true;
+        base.KillCharacter();
+        
+        
     }
 
     private void CastSpell()
@@ -166,11 +224,23 @@ public class PlayerController : Character
         {
             if (Input.GetKeyDown("space"))
             {
-                GameObject magicBulletObject = Instantiate(magicBulletPrefab);
-                magicBulletObject.transform.position = magicBulletSpawnPoint.transform.position;
-                magicBulletObject.GetComponent<MagicBullet>().Cast(lastMove);
+                GameObject bullet = RetrieveBulletFromPool();
+                bullet.SetActive(true);
+                bullet.transform.position = magicBulletSpawnPoint.transform.position;
+                bullet.GetComponent<MagicBullet>().Cast(lastMove);
             }
         }
 
+    }
+
+    GameObject RetrieveBulletFromPool()
+    {
+        for (int i = 0; i < bulletObjectPool.Count; i++)
+        {
+            if(!bulletObjectPool[i].activeInHierarchy)
+            { return bulletObjectPool[i]; }
+        }
+        bulletObjectPool.Add(Instantiate(magicBulletPrefab));
+        return bulletObjectPool[bulletObjectPool.Count - 1];
     }
 }
